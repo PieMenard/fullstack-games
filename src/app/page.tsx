@@ -40,7 +40,11 @@ export default function Home() {
   return (
     <div className="text-center">
       <h1 className="font-bold text-3xl my-5">Gamespot</h1>
-      <SearchBox query={query} setQuery={setQuery} />
+      <SearchBox
+        query={query}
+        setQuery={setQuery}
+        setCurrentPage={setCurrentPage}
+      />
       <div>
         {' '}
         {loading ? (

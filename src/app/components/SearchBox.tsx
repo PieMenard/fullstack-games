@@ -3,12 +3,14 @@ import { useDebouncedCallback } from 'use-debounce';
 type SearchBoxProps = {
   query: string;
   setQuery: (term: string) => void;
+  setCurrentPage: (page: number) => void;
 };
 
-const SearchBox = ({ query, setQuery }: SearchBoxProps) => {
+const SearchBox = ({ query, setQuery, setCurrentPage }: SearchBoxProps) => {
   const handleChange = useDebouncedCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setQuery(e.target.value);
+      setCurrentPage(1);
     },
     300
   );
