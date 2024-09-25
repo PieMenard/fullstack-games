@@ -6,7 +6,7 @@ const GameCard = ({ game }: { game: Game }) => {
     <div className="w-[400px] h-[320px] border-2 rounded-md m-4 bg-slate-500">
       <h1 className="font-bold text-xl py-2">{game.name}</h1>
       <Image
-        src={game.background_image}
+        src={game.background_image ? game.background_image : '/no-image.png'}
         alt={game.name}
         width={0}
         height={0}
