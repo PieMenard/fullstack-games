@@ -1,7 +1,6 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import { useDebouncedCallback } from 'use-debounce';
 
 type SearchBoxProps = {
   setNewSearch: (term: string) => void;
@@ -10,13 +9,6 @@ type SearchBoxProps = {
 
 const SearchBox = ({ setCurrentPage, setNewSearch }: SearchBoxProps) => {
   const [query, setQuery] = useState('');
-  // const handleChange = useDebouncedCallback(
-  //   (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     setQuery(e.target.value);
-  //     setCurrentPage(1);
-  //   },
-  //   300
-  // );
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
