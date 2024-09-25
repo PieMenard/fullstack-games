@@ -2,6 +2,7 @@
 
 import { Game } from '@/types/Game';
 import { useEffect, useState } from 'react';
+import Pagination from './component/Pagination';
 
 export default function Home() {
   const api_key = process.env.NEXT_PUBLIC_API_KEY;
@@ -40,24 +41,11 @@ export default function Home() {
           ))}
         </ul>
       </div>
-      {/* Pagination */}
-      <div className="w-[30%] flex justify-between mx-auto py-6">
-        <button
-          onClick={() => setCurrentPage(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="rounded-md bg-orange-400 px-2 disabled:opacity-40 disabled:pointer-events-none hover:bg-orange-600"
-        >
-          {'<'} Prev
-        </button>
-        page {currentPage} of {totalPages}
-        <button
-          onClick={() => setCurrentPage(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className="rounded-md bg-orange-400 px-2 disabled:opacity-40 disabled:pointer-events-none hover:bg-orange-600"
-        >
-          Next {'>'}
-        </button>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   );
 }
