@@ -4,6 +4,7 @@ import { Game } from '@/types/Game';
 import { useEffect, useState } from 'react';
 import Pagination from './components/Pagination';
 import SearchBox from './components/SearchBox';
+import GameCard from './components/GameCard';
 
 export default function Home() {
   const api_key = process.env.NEXT_PUBLIC_API_KEY;
@@ -49,10 +50,10 @@ export default function Home() {
             {games.length === 0 ? (
               <p>No games found {':('}</p>
             ) : (
-              <ul>
+              <ul className="flex flex-wrap justify-center">
                 {games.map((game) => (
                   <li key={game.id}>
-                    {game.id}. {game.name}
+                    <GameCard game={game} />
                   </li>
                 ))}
               </ul>
