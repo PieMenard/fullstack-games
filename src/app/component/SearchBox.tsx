@@ -9,7 +9,6 @@ const SearchBox = ({ query, setQuery }: SearchBoxProps) => {
   const handleChange = useDebouncedCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setQuery(e.target.value);
-      console.log(query);
     },
     300
   );

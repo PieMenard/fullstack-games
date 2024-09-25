@@ -21,7 +21,7 @@ const Pagination = ({
       page {currentPage} of {totalPages}
       <button
         onClick={() => setCurrentPage(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        disabled={currentPage === totalPages || totalPages === 0}
         className="rounded-md bg-orange-400 px-2 disabled:opacity-40 disabled:pointer-events-none hover:bg-orange-600"
       >
         Next {'>'}
