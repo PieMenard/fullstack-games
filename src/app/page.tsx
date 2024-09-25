@@ -13,7 +13,7 @@ export default function Home() {
   const [totalResults, setTotalResults] = useState(0);
   const itemsPerPage = 20;
 
-  const [query, setQuery] = useState('');
+  const [newSearch, setNewSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Home() {
     const fetchGames = async () => {
       try {
         const response = await fetch(
-          `https://api.rawg.io/api/games?key=${api_key}&page=${currentPage}&page_size=${itemsPerPage}&search=${query}`
+          `https://api.rawg.io/api/games?key=${api_key}&page=${currentPage}&page_size=${itemsPerPage}&search=${newSearch}`
         );
         const data = await response.json();
         setTotalResults(data.count);
@@ -33,18 +33,14 @@ export default function Home() {
       }
     };
     fetchGames();
-  }, [currentPage, query]);
+  }, [currentPage, newSearch]);
 
   const totalPages = Math.ceil(totalResults / itemsPerPage);
 
   return (
     <div className="text-center">
       <h1 className="font-bold text-3xl my-5">Gamespot</h1>
-      <SearchBox
-        query={query}
-        setQuery={setQuery}
-        setCurrentPage={setCurrentPage}
-      />
+      <SearchBox setNewSearch={setNewSearch} setCurrentPage={setCurrentPage} />
       <div>
         {' '}
         {loading ? (
