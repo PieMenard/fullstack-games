@@ -2,8 +2,8 @@
 
 import { Game } from '@/types/Game';
 import { useEffect, useState } from 'react';
-import Pagination from './component/Pagination';
-import SearchBox from './component/SearchBox';
+import Pagination from './components/Pagination';
+import SearchBox from './components/SearchBox';
 
 export default function Home() {
   const api_key = process.env.NEXT_PUBLIC_API_KEY;
