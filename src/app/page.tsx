@@ -13,8 +13,10 @@ export default function Home() {
   const itemsPerPage = 20;
 
   const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const fetchGames = async () => {
       try {
         const response = await fetch(
@@ -25,6 +27,8 @@ export default function Home() {
         setGames(data.results);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchGames();
@@ -37,16 +41,23 @@ export default function Home() {
       <h1 className="font-bold text-3xl my-5">Gamespot</h1>
       <SearchBox query={query} setQuery={setQuery} />
       <div>
-        {games.length === 0 ? (
-          <p>No games found {':('}</p>
+        {' '}
+        {loading ? (
+          <p>Loading...</p>
         ) : (
-          <ul>
-            {games.map((game) => (
-              <li key={game.id}>
-                {game.id}. {game.name}
-              </li>
-            ))}
-          </ul>
+          <div>
+            {games.length === 0 ? (
+              <p>No games found {':('}</p>
+            ) : (
+              <ul>
+                {games.map((game) => (
+                  <li key={game.id}>
+                    {game.id}. {game.name}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         )}
       </div>
       <Pagination
